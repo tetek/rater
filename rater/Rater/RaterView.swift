@@ -9,24 +9,28 @@
 import UIKit
 import AVFoundation
 
+
+
 class RaterView: UIView, UIScrollViewDelegate {
 
-    let raterScrollView : RaterScrollView = RaterScrollView()
-    let selectorView = SelectorView()
+    let raterScrollView : RaterScrollView
+    let selectorView : SelectorView
     var audioPlayer : AVAudioPlayer!
-
+    var lastValue : CGFloat = 0
+    
+    init(settings: RaterSettings) {
+        raterScrollView = RaterScrollView(frame: CGRectZero, settings: settings)
+        selectorView = SelectorView(settings: settings)
+        super.init(frame: CGRectZero)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
+        raterScrollView = RaterScrollView(frame: CGRectZero,settings: RaterSettings())
+        selectorView = SelectorView(settings: RaterSettings())
         super.init(coder: aDecoder)
         
-//        player = AVAudioPlayer(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("tick", ofType: "wav")!)!)
         let filePathUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("tick", ofType: "wav")!)
 
-//        if let audioPlayer =
-//            // use audioPlayer
-//        } else {
-//            print(initError) // handle error
-//        }
-////        let contents: NSString?
 
         do {
             audioPlayer = try AVAudioPlayer(contentsOfURL: filePathUrl)
@@ -53,12 +57,13 @@ class RaterView: UIView, UIScrollViewDelegate {
         let p = raterScrollView.closestPointAndValue(targetContentOffset.memory)
         targetContentOffset.memory.y = p.0.y
     }
-    var lastValue : CGFloat = 0
+    
+
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y + scrollView.contentInset.top
-        if fabs(y - lastValue) > raterScrollView.ruler.separator{
+        if fabs(y - lastValue) > raterScrollView.settings.separator{
             audioPlayer.play()
-            lastValue = y//scrollView.contentOffset.y
+            lastValue = y
         }
         
         let p = raterScrollView.closestPointAndValue(scrollView.contentOffset)
