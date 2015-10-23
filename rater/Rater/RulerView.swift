@@ -10,23 +10,11 @@ import UIKit
 
 class RulerView: UIView {
 
-    
-    let settings : RaterSettings
-    // Init
-    init (frame: CGRect, settings: RaterSettings) {
-        self.settings = settings
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.settings = RaterSettings()
-        super.init(coder: aDecoder)
-    }
-    
+    var settings : RaterSettings = RaterSettings()
+
     override func didMoveToSuperview() {
         self.backgroundColor = UIColor.clearColor()
     }
-
     
     override func drawRect(rect: CGRect) {
         let cntx = UIGraphicsGetCurrentContext()

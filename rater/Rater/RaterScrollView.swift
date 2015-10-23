@@ -10,22 +10,9 @@ import UIKit
 
 class RaterScrollView: UIScrollView {
 
-    let ruler : RulerView
-    let settings: RaterSettings
-    // Init
-    init (frame: CGRect, settings: RaterSettings) {
-        self.settings = settings
-        ruler = RulerView(frame: CGRectMake(0, 0, frame.size.width, settings.calculateHeight()), settings: settings)
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.settings = RaterSettings()
-        ruler = RulerView(frame: CGRectZero, settings: settings)
-        super.init(coder: aDecoder)
-    }
+    var ruler       : RulerView!
+    var settings    : RaterSettings = RaterSettings()
 
-    
     override func willMoveToSuperview(newSuperview: UIView?) {
         if newSuperview != nil{
             setupGUI()
@@ -36,12 +23,14 @@ class RaterScrollView: UIScrollView {
         self.showsHorizontalScrollIndicator = false
         self.showsVerticalScrollIndicator = false
         self.bounces = false
-        
         self.contentInset = UIEdgeInsetsMake(self.frame.size.height/2 - settings.thickLine/2.0, 0, self.frame.size.height/2 - settings.thickLine/2.0, 0)
-
-        ruler.frame = CGRectMake(0, 0, self.frame.size.width, settings.calculateHeight())
+        
+        ruler = RulerView(frame: CGRectMake(0, 0, frame.size.width, settings.calculateHeight()))
+        ruler.settings = settings
         self.contentSize = ruler.frame.size
         self.addSubview(ruler)
+        self.contentOffset = closestPointAndValue(CGPointMake(0, ruler.frame.size.height/2.0 - self.frame.size.height/2.0 - settings.thickLine/2.0)).0
+
     }
     
     func closestPointAndValue(targetPoint: CGPoint) -> (CGPoint,CGFloat){
@@ -57,11 +46,14 @@ class RaterScrollView: UIScrollView {
         }
         
         let prob = Int(y) + rest
-        print(prob)
         
         let elem = CGFloat(Int(y) + rest) / settings.separator
         
         return (CGPointMake(targetPoint.x, CGFloat(prob)-self.contentInset.top) , CGFloat(CGFloat(settings.numberOfSteps()-1) - elem) * settings.step)
+    }
+    
+    func currentValue() -> CGFloat {
+        return self.closestPointAndValue(self.contentOffset).1
     }
 }
 

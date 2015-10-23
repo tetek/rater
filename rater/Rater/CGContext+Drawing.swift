@@ -10,14 +10,19 @@ import UIKit
 extension CGContext {
     
     func drawSmileFace(anchor: CGPoint, percent: CGFloat, settings: RaterSettings) {
+
         let y = anchor.y
         CGContextSetRGBStrokeColor(self, settings.baseColor.0 - percent, percent, settings.baseColor.2, 1.0)
-        CGContextSetLineWidth(self, 3)
-        CGContextAddArc(self, anchor.x, y, 25 , 0, CGFloat(M_PI*2), 1)
-        CGContextMoveToPoint(self, anchor.x-25, y)
-        let curveStrength : CGFloat = 40.0
+        CGContextSetLineWidth(self, 2)
+        let radius : CGFloat = 15.0
+        CGContextAddArc(self, anchor.x, y, radius , 0, CGFloat(M_PI*2), 1)
+        
+        let curveStrength : CGFloat = 20.0
         let point = curveStrength * percent
-        CGContextAddCurveToPoint(self, anchor.x-25, y, anchor.x, y - curveStrength/2.0 + point, anchor.x + 20, y)
+        let mouthY = y + 5
+        let halfMouth :CGFloat = 8
+        CGContextMoveToPoint(self, anchor.x - halfMouth, mouthY)
+        CGContextAddCurveToPoint(self, anchor.x - halfMouth, mouthY, anchor.x, mouthY - curveStrength/2.0 + point, anchor.x + halfMouth, mouthY)
         CGContextStrokePath(self)
     }
     
@@ -26,7 +31,7 @@ extension CGContext {
         CGContextSetRGBStrokeColor(self, settings.baseColor.0 - percent, percent, settings.baseColor.2, 1.0)
         CGContextSetLineWidth(self, settings.thickLine)
         CGContextMoveToPoint(self, anchor.x, y)
-        CGContextAddLineToPoint(self, settings.thickLineWidth ,y)
+        CGContextAddLineToPoint(self, settings.thickLineWidth*1.5 ,y)
         CGContextStrokePath(self)
     }
     

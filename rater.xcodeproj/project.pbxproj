@@ -83,12 +83,12 @@
 		7DBF74021BCDD4CA0020BA71 /* Rater */ = {
 			isa = PBXGroup;
 			children = (
-				7DBF74031BCDD4CA0020BA71 /* CGContext+Drawing.swift */,
-				7DBF74041BCDD4CA0020BA71 /* RaterScrollView.swift */,
 				7DBF74051BCDD4CA0020BA71 /* RaterSettings.swift */,
 				7DBF74061BCDD4CA0020BA71 /* RaterView.swift */,
-				7DBF74071BCDD4CA0020BA71 /* RulerView.swift */,
 				7DBF74081BCDD4CA0020BA71 /* SelectorView.swift */,
+				7DBF74041BCDD4CA0020BA71 /* RaterScrollView.swift */,
+				7DBF74071BCDD4CA0020BA71 /* RulerView.swift */,
+				7DBF74031BCDD4CA0020BA71 /* CGContext+Drawing.swift */,
 			);
 			path = Rater;
 			sourceTree = "<group>";

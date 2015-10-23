@@ -9,10 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let rater = self.view as! RaterView
+        var settings = rater.settings
+        settings.separator = 14.0
+        rater.settings = settings
+        rater.completition = { print($0) }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
