@@ -12,13 +12,13 @@
 		7D8398071B970CFC0005BFC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8398051B970CFC0005BFC5 /* Main.storyboard */; };
 		7D8398091B970CFC0005BFC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D8398081B970CFC0005BFC5 /* Assets.xcassets */; };
 		7D83980C1B970CFC0005BFC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D83980A1B970CFC0005BFC5 /* LaunchScreen.storyboard */; };
-		7DBF74091BCDD4CA0020BA71 /* CGContext+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74031BCDD4CA0020BA71 /* CGContext+Drawing.swift */; settings = {ASSET_TAGS = (); }; };
-		7DBF740A1BCDD4CA0020BA71 /* RaterScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74041BCDD4CA0020BA71 /* RaterScrollView.swift */; settings = {ASSET_TAGS = (); }; };
-		7DBF740B1BCDD4CA0020BA71 /* RaterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74051BCDD4CA0020BA71 /* RaterSettings.swift */; settings = {ASSET_TAGS = (); }; };
-		7DBF740C1BCDD4CA0020BA71 /* RaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74061BCDD4CA0020BA71 /* RaterView.swift */; settings = {ASSET_TAGS = (); }; };
-		7DBF740D1BCDD4CA0020BA71 /* RulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74071BCDD4CA0020BA71 /* RulerView.swift */; settings = {ASSET_TAGS = (); }; };
-		7DBF740E1BCDD4CA0020BA71 /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74081BCDD4CA0020BA71 /* SelectorView.swift */; settings = {ASSET_TAGS = (); }; };
-		7DE90BE51B9CB1020049D97C /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7DE90BE41B9CB1020049D97C /* tick.wav */; settings = {ASSET_TAGS = (); }; };
+		7DBF74091BCDD4CA0020BA71 /* CGContext+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74031BCDD4CA0020BA71 /* CGContext+Drawing.swift */; };
+		7DBF740A1BCDD4CA0020BA71 /* RaterScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74041BCDD4CA0020BA71 /* RaterScrollView.swift */; };
+		7DBF740B1BCDD4CA0020BA71 /* RaterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74051BCDD4CA0020BA71 /* RaterSettings.swift */; };
+		7DBF740C1BCDD4CA0020BA71 /* RaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74061BCDD4CA0020BA71 /* RaterView.swift */; };
+		7DBF740D1BCDD4CA0020BA71 /* RulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74071BCDD4CA0020BA71 /* RulerView.swift */; };
+		7DBF740E1BCDD4CA0020BA71 /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF74081BCDD4CA0020BA71 /* SelectorView.swift */; };
+		7DE90BE51B9CB1020049D97C /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7DE90BE41B9CB1020049D97C /* tick.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +124,8 @@
 				TargetAttributes = {
 					7D8397FD1B970CFC0005BFC5 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = LVE8644388;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -282,11 +284,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LVE8644388;
 				INFOPLIST_FILE = rater/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.binarka.rater;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -294,11 +298,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LVE8644388;
 				INFOPLIST_FILE = rater/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = pl.binarka.rater;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

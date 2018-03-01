@@ -15,28 +15,29 @@ class SelectorView: UIView {
     var percent     : CGFloat = 0.0
     var text        : String?
     override func didMoveToSuperview() {
-        self.backgroundColor = UIColor.clearColor()
-        label = UILabel(frame: CGRectMake(140, self.bounds.height/2.0 - 25, 100, 50))
-        label.font = UIFont.systemFontOfSize(30)
+        self.backgroundColor = UIColor.clear
+        label = UILabel(frame: CGRect(x: 140, y: self.bounds.height/2.0 - 25, width: 100, height: 50))
+        label.font = UIFont.systemFont(ofSize: 30)
         label.text = text
-        label.textColor = UIColor.blackColor()
+        label.textColor = UIColor.white
         self.addSubview(label)
-        self.userInteractionEnabled = false
+        self.label.isHidden = true
+        self.isUserInteractionEnabled = false
         
     }
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let cntx = UIGraphicsGetCurrentContext()
-        cntx?.drawSmileFace(CGPointMake(settings.thickLineWidth*1.5 + 40, self.frame.size.height/2.0), percent: percent, settings: settings)
-        cntx?.drawCentralLine(CGPointMake(0, self.frame.size.height/2.0), percent: percent, settings: settings)
-        super.drawRect(rect)
+        cntx?.drawSmileFace(CGPoint(x: settings.thickLineWidth*1.5 + 60, y: self.frame.size.height/2.0), percent: percent, settings: settings)
+        cntx?.drawCentralLine(CGPoint(x: 0, y: self.frame.size.height/2.0), percent: percent, settings: settings)
+        super.draw(rect)
     }
     
-    func updateValue(value: CGFloat){
+    func updateValue(_ value: CGFloat){
         text = String(format: "%.1f", value)
         if label != nil {
             label.text = text
         }
-        percent = value/(CGFloat.abs(settings.minValue) + CGFloat.abs(settings.maxValue))
+        percent = value/(abs(settings.minValue) + abs(settings.maxValue))
         setNeedsDisplay()
     }
 }

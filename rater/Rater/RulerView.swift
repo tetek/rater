@@ -13,13 +13,13 @@ class RulerView: UIView {
     var settings : RaterSettings = RaterSettings()
 
     override func didMoveToSuperview() {
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let cntx = UIGraphicsGetCurrentContext()
         cntx?.drawRuler(settings)
-        super.drawRect(rect)
+        super.draw(rect)
     }
     
 }

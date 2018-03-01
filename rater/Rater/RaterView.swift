@@ -16,7 +16,7 @@ class RaterView: UIView, UIScrollViewDelegate {
     var settings            : RaterSettings = RaterSettings()
     var completition        : ((CGFloat) -> ())?
     
-    override func willMoveToSuperview(newSuperview: UIView?) {
+    override func willMove(toSuperview newSuperview: UIView?) {
         if newSuperview != nil{
             raterScrollView = RaterScrollView(frame: self.bounds)
             selectorView = SelectorView()
@@ -26,20 +26,20 @@ class RaterView: UIView, UIScrollViewDelegate {
             raterScrollView.delegate = self
             self.addSubview(raterScrollView)
             let selectorHeight : CGFloat = 100.0
-            selectorView.frame = CGRectMake(0, self.frame.size.height/2 - selectorHeight/2.0, self.frame.size.width, selectorHeight)
+            selectorView.frame = CGRect(x: 0, y: self.frame.size.height/2 - selectorHeight/2.0, width: self.frame.size.width, height: selectorHeight)
             self.addSubview(selectorView)
             
-            let tap = UITapGestureRecognizer(target: self, action: "tapped")
+            let tap = UITapGestureRecognizer(target: self, action: #selector(RaterView.tapped))
             self.addGestureRecognizer(tap)
         }
     }
     
-    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
-        let p = raterScrollView.closestPointAndValue(targetContentOffset.memory)
-        targetContentOffset.memory.y = p.0.y
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
+        let p = raterScrollView.closestPointAndValue(targetContentOffset.pointee)
+        targetContentOffset.pointee.y = p.0.y
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let p = raterScrollView.closestPointAndValue(scrollView.contentOffset)
         selectorView.updateValue(p.1)
     }
